@@ -58,8 +58,7 @@ pki:
   cert: /path/to/appdata/nebula/config/lighthouse1.crt
   key: /path/to/appdata/nebula/config/lighthouse1.key
 
-static_host_map:
-  "10.10.10.1": ["82.165.195.214:4242"]
+static_host_map: {}
 
 lighthouse:
   am_lighthouse: true
@@ -166,7 +165,7 @@ punchy:
   punch: true
 
 tun:
-  dev: nebula1
+  dev: nebula1 //utun sur macOs par exemple utun9, utun10 ...
   drop_local_broadcast: false
   drop_multicast: false
   tx_queue: 500
