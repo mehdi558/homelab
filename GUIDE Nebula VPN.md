@@ -54,47 +54,39 @@ Exemple de configuration pour le serveur Lighthouse :
 
 ```yaml
 pki:
-  ca: /path/to/appdata/nebula/config/ca.crt
-  cert: /path/to/appdata/nebula/config/lighthouse1.crt
-  key: /path/to/appdata/nebula/config/lighthouse1.key
+  ca: /config/ca.crt
+  cert: /config/lighthouse1.crt
+  key: /config/lighthouse1.key
 
 static_host_map: {}
 
 lighthouse:
   am_lighthouse: true
-  serve_dns: false
   interval: 60
+  hosts: []
+  serve_dns: false
 
 listen:
   host: "::"
   port: 4242
 
+tun:
+  dev: nebula1
+  mtu: 1300
+
 punchy:
   punch: true
 
-tun:
-  dev: nebula1
-  drop_local_broadcast: false
-  drop_multicast: false
-  tx_queue: 500
-  mtu: 1300
-
-logging:
-  level: info
-  format: text
-
 firewall:
-  conntrack:
-    tcp_timeout: 12m
-    udp_timeout: 3m
-    default_timeout: 10m
+  inbound_action: accept
+  outbound_action: accept
 
-  outbound:
+  inbound:
     - port: any
       proto: any
       host: any
 
-  inbound:
+  outbound:
     - port: any
       proto: any
       host: any
@@ -149,7 +141,7 @@ pki:
   key: /path/to/client1.key
 
 static_host_map:
-  "10.10.10.1": ["82.165.195.214:4242"]
+  "10.10.10.1": ["82.165.195.214:4242"] # IP du lighthouse : port
 
 lighthouse:
   am_lighthouse: false
@@ -159,37 +151,29 @@ lighthouse:
 
 listen:
   host: "::"
-  port: 4242
+  port: 4242 # 0 = port aléatoire pour le client
 
 punchy:
   punch: true
 
 tun:
-  dev: nebula1 //utun sur macOs par exemple utun9, utun10 ...
+  dev: nebula1 # utun sur macOs par exemple utun9, utun10 ...
   drop_local_broadcast: false
   drop_multicast: false
   tx_queue: 500
   mtu: 1300
 
-logging:
-  level: info
-  format: text
-
 firewall:
-  conntrack:
-    tcp_timeout: 12m
-    udp_timeout: 3m
-    default_timeout: 10m
-
-  outbound:
-    - port: any
-      proto: any
-      host: any
-
   inbound:
-    - port: any
+    - port: 0
       proto: any
       host: any
+      action: accept
+  outbound:
+    - port: 0
+      proto: any
+      host: any
+      action: accept
 ```
 
 ### 4. Démarrer Nebula sur le client
