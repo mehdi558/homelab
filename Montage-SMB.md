@@ -52,7 +52,7 @@ Ajoute cette ligne à la fin :
 
 ```
 # Montage SMB résilient pour Docker / Plex / Radarr / Sonarr
-//192.168.1.145/media_pool /mnt/media_share cifs credentials=/etc/samba/creds-media,vers=3.0,iocharset=utf8,file_mode=0777,dir_mode=0777,nounix,noserverino,_netdev,x-systemd.automount,soft,actimeo=30 0 0
+//192.168.1.145/media_pool /mnt/media_share cifs credentials=/etc/samba/creds-media,uid=1000,gid=1000,vers=3.0,iocharset=utf8,file_mode=0775,dir_mode=0775,nounix,noserverino,_netdev,x-systemd.automount,noauto,soft,rw,cache=strict,actimeo=30,retry=3 0 0
 ```
 
 ### 💡 Détails des options :
