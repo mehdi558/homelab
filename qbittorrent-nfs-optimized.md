@@ -50,7 +50,7 @@ Ajoute cette ligne à la fin :
 
 ```bash
 # Montage NFS optimisé pour qBittorrent - Priorité : performance et résilience
-192.168.1.145:/Volumes/media_pool  /mnt/media_share  nfs  nfsvers=3,nolock,uid=1000,gid=1000,rsize=1048576,wsize=1048576,async,noactime,nodiratime,timeo=600,retrans=2,soft,_netdev,noauto,x-systemd.automount  0  0
+192.168.1.145:/Volumes/media_pool  /mnt/media_share  nfs  nfsvers=3,nolock,rsize=1048576,wsize=1048576,async,noactime,nodiratime,timeo=600,retrans=2,soft,_netdev,noauto,x-systemd.automount  0  0
 ```
 
 ### 🎯 Différences clés pour qBittorrent
@@ -85,7 +85,6 @@ Ajoute cette ligne à la fin :
 |--------|-------------|
 | `nfsvers=3` | Forcer NFS v3 (requis pour les serveurs macOS) |
 | `nolock` | Évite les erreurs de verrouillage sur systèmes multi-clients |
-| `uid=1000,gid=1000` | Donne les droits au même utilisateur que Docker/qBittorrent |
 | `rsize/wsize=262144` | Taille des blocs lecture/écriture (256 K) → bon compromis perf/stabilité |
 | `async` | Améliore la vitesse d'écriture |
 | `_netdev` | Attend que le réseau soit prêt avant de monter |
