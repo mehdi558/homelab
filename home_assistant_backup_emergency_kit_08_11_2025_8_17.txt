@@ -1,0 +1,16 @@
+Kit de secours pour Home Assistant
+
+Ce kit de secours contient la clé de chiffrement de vos sauvegardes. Vous avez besoin de cette clé pour pouvoir restaurer les sauvegardes de votre Home Assistant.
+
+Date : 8 novembre 2025 à 08:17
+
+Instance :
+Maison
+
+Adresse :
+http://192.168.1.185:8123
+
+Clé de chiffrement :
+1LUH-99YB-URMO-Z1SV-ODX7-CTK7-5B8A
+
+Pour plus d'informations, visitez le site https://www.home-assistant.io/more-info/backup-emergency-kit
